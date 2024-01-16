@@ -33,7 +33,34 @@
         return getPlayerSelection();
       }
       
-      
+      function play(playerSelection, computerSelection) {
+        let winner;
+        if (playerSelection === computerSelection) {
+          winner = "";
+          console.log("It's a tie.");
+          return;
+        } else if (playerSelection === "rock" || computerSelection === "rock") {
+          if (playerSelection === "paper" || computerSelection === "paper") {
+            winner = "paper"
+          } else {
+            winner = "rock"
+          }
+        } else if (playerSelection === "paper" || computerSelection === "paper") {
+          if (playerSelection === "scissors" || computerSelection === "scissors") {
+            winner = "scissors"
+          } 
+        } else {
+          console.log("you must never see me!");
+        }
+        
+        if (winner === playerSelection) {
+          console.log(`You win! ${winner} beats ${computerSelection}`);
+        } else {
+          console.log(`You lose! ${winner} beats ${playerSelection}`);
+        }
+      }
+
+        
     </script>
 </body>
 </html>
