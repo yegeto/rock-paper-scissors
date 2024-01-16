@@ -6,6 +6,22 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <script>
+      function getComputerChoice() {
+        const randomNumber = Math.floor(Math.random() * 3);
+        let computerChoice;
+        switch (randomNumber) {
+          case 0:
+            computerChoice = "rock"
+            return computerChoice
+          case 1:
+            computerChoice = "paper"
+            return computerChoice
+          default:
+            computerChoice = "scissors"
+            return computerChoice
+        }   
+      }
+    </script>
 </body>
 </html>
