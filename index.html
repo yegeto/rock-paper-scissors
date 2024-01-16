@@ -22,6 +22,18 @@
             return computerChoice
         }   
       }
+
+      function getPlayerSelection() {
+        let playerSelection = prompt("Rock? Paper? Scissors?");
+        playerSelection = playerSelection.trim().toLowerCase();
+        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+          return playerSelection
+        }
+        alert("Your input is not acceptable. Please try again.")
+        return getPlayerSelection();
+      }
+      
+      
     </script>
 </body>
 </html>
