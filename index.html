@@ -37,8 +37,8 @@
         let winner;
         if (playerSelection === computerSelection) {
           winner = "";
-          console.log("It's a tie.");
-          return;
+          alert("It's a tie.");
+          return 0;
         } else if (playerSelection === "rock" || computerSelection === "rock") {
           if (playerSelection === "paper" || computerSelection === "paper") {
             winner = "paper"
@@ -49,18 +49,42 @@
           if (playerSelection === "scissors" || computerSelection === "scissors") {
             winner = "scissors"
           } 
-        } else {
-          console.log("you must never see me!");
         }
         
         if (winner === playerSelection) {
-          console.log(`You win! ${winner} beats ${computerSelection}`);
+          alert(`You win! ${capitalize(winner)} beats ${capitalize(computerSelection)}`);
+          return 1;
         } else {
-          console.log(`You lose! ${winner} beats ${playerSelection}`);
+          alert(`You lose! ${capitalize(winner)} beats ${capitalize(playerSelection)}`);
+          return -1;
         }
       }
 
-        
+      function capitalize(string) {
+        const firstLetter = string.at(0);
+        const capitalizedLetter = firstLetter.toUpperCase();
+        return string.replace(firstLetter, capitalizedLetter)
+      }
+
+      function game() {
+        let score = 0;
+        for (let i = 0; i < 5; i++) {
+          score += playRound(getPlayerSelection(), getComputerChoice());
+        }
+        if (score > 0) {
+          alert("Congratulations! You win the game!")
+        } else if (score = 0) {
+          alert("Game over. It's a draw.")
+        } else {
+          alert("Game over. You lose!")
+        }
+
+        if (confirm("Do you want to play again?")) {
+          return game();
+        }
+      }
+
+      game();
     </script>
 </body>
 </html>
