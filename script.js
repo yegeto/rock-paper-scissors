@@ -8,3 +8,6 @@ const getComputerChoice = () => {
 };
 
 const getHumanChoice = () => prompt("Rock? Paper? Scissors?");
+
+let humanScore = 0;
+let computerScore = 0;
