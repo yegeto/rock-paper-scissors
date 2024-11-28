@@ -6,3 +6,5 @@ const getComputerChoice = () => {
     ? "Paper"
     : "Scissors";
 };
+
+const getHumanChoice = () => prompt("Rock? Paper? Scissors?");
