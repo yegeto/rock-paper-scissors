@@ -33,14 +33,54 @@ const playGame = () => {
     }
   };
 
-  let roundCounter = 0;
+  const gameScreen = document.querySelector("body");
+  const rockButton = document.createElement("button");
+  const paperButton = document.createElement("button");
+  const scissorsButton = document.createElement("button");
 
-  while (roundCounter < 5) {
-    const roundResult = playRound(getHumanChoice(), getComputerChoice());
-    const currentScore = `\nYour Score: ${humanScore}\nComputer Score: ${computerScore}`;
-    console.log(roundResult, currentScore);
-    roundCounter++;
-  }
+  rockButton.textContent = "Rock";
+  paperButton.textContent = "Paper";
+  scissorsButton.textContent = "Scissors";
+
+  gameScreen.appendChild(rockButton);
+  gameScreen.appendChild(paperButton);
+  gameScreen.appendChild(scissorsButton);
+
+  const resultScreen = document.createElement("div");
+  const roundResult = document.createElement("p");
+  const score = document.createElement("p");
+
+  gameScreen.appendChild(resultScreen);
+  resultScreen.appendChild(roundResult);
+  resultScreen.appendChild(score);
+
+  score.textContent = `Your Score:${humanScore} Computer Score:${computerScore}`;
+
+  rockButton.addEventListener("click", () => {
+    roundResult.textContent = playRound("Rock", getComputerChoice());
+    score.textContent = `Your Score:${humanScore} Computer Score:${computerScore}`;
+    checkEndGame(humanScore, computerScore);
+  });
+  paperButton.addEventListener("click", () => {
+    roundResult.textContent = playRound("Paper", getComputerChoice());
+    score.textContent = `Your Score:${humanScore} Computer Score:${computerScore}`;
+    checkEndGame(humanScore, computerScore);
+  });
+  scissorsButton.addEventListener("click", () => {
+    roundResult.textContent = playRound("Scissors", getComputerChoice());
+    score.textContent = `Your Score:${humanScore} Computer Score:${computerScore}`;
+    checkEndGame(humanScore, computerScore);
+  });
+
+  const checkEndGame = (humanScore, computerScore) => {
+    const gameResult = document.createElement("h2");
+    if (humanScore > 5) {
+      gameResult.textContent = "You win the game!";
+    } else if (computerScore > 5) {
+      gameResult.textContent = "You lose the game!";
+    }
+    resultScreen.appendChild(gameResult);
+  };
 };
 
 playGame();
